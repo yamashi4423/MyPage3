@@ -11,10 +11,16 @@ import Side from './components/Side';
 import Nav from './components/Nav';
 import { useState } from 'react';
 import Toggle from './components/Toggle';
+import BlogAdd from './components/BlogAdd';
 
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(false); // ナビゲーションを表示するかどうか
+  const [blogs, setBlogs] = useState([{id: "id", title: "title", body: "body"}]); // ブログのデータ
+
+  // 現在のデータ一覧
+  console.log("(@App.jsx) blogs:", blogs);
+
   return (
     <>
       <BrowserRouter>
@@ -37,8 +43,10 @@ function App() {
             <MainContainer>
               <Routes>
                 <Route path="/" element={<Main/>}></Route>
+                <Route path='/edit' element={<Edit/>}></Route>
                 <Route path='/blog' element={<Blog/>}></Route>
                 <Route path='/blog/edit' element={<BlogEdit/>}></Route>
+                <Route path='/blog/add' element={<BlogAdd blogs={blogs} setBlogs={setBlogs}/>}></Route>
               </Routes>
             </MainContainer>
           </MainWrapper>
@@ -62,7 +70,7 @@ const Wrapper = styled.div`
   width: 100%;
   /* height: 100%; */
   /* padding: 0 1rem; */
-  background-color: #EEE;
+  background-color: #EFEFEF;
 
 `;
 
@@ -70,13 +78,13 @@ const Wrapper = styled.div`
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 3rem;
-  position: fixed;
+  height: auto;
+  /* position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 999; */
   color: var(--header-color);
-  background-color: var(--header-back);
+  background-color: hsl(190, 100%, 30%);
   font-family: var(--header-font);
 `;
 
@@ -84,35 +92,38 @@ const NavContainer = styled.div`
   position: fixed;
   top: 0;
   right: ${props => props.showNav ? '0vw' : '-50vw' }; // styled-componentsはコンポーネントとして捉える。クラスを付与するのではなく、値をコンポーネントを操作するように変更する
-  width: 40vw;
+  width: 50vw;
   height: 100%;
   z-index: 9999;
-  background-color: var(--nav-back);
+  background-color: hsl(190, 100%, 30%);
   transition: all .5s;
+  @media (min-width: 580px) {
+    width: 40vw;
+  }
+  @media (min-width: 980px) {
+    width: 30vw;
+  }
 `;
 
 const MainWrapper = styled.div`
-  margin: calc(3rem  ) auto 10px auto; // position: fixed; でヘッダーを固定しているので、ヘッダー分（2rem）のマージンをとっている
-  padding: 1rem 2px 5px 2px;
+  margin: 0 auto 0 auto; // position: fixed; でヘッダーを固定しているので、ヘッダー分（2rem）のマージンをとっている
+  padding: 1rem 2px;
   max-width: 980px;
+  /* color: var(--body-color); */
   @media (min-width: 580px) {
-    padding: 5px 3rem;
+    padding: 2.5rem 3rem;
   }
   @media (min-width: 980px) {
-    padding: 5px 3rem;
+    padding: 2.5rem 3rem;
     
   }
-
-  
-  /* width: 100%; */
-  /* height: 100%; */
 `;
 
 const MainContainer = styled.div`
   background-color: white;
   margin: 1rem 4px;
   padding: 1rem 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   @media (min-width: 980px) {
     padding: 1rem 2rem;
   }

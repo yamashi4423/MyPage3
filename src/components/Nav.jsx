@@ -2,34 +2,15 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components'
 import NavQuit from './NavQuit';
+import navData from '../data/navData';
 
 function Nav({showNav, setShowNav}) {
-  const navData = [
-		{
-			title: "HOME",
-			icon: <i class="fa-solid fa-house"></i>,
-			link: "/",
-		},
-		{
-			title: "BLOG",
-			icon: <i class="fa-solid fa-clipboard"></i>,
-			link: "/blog",
-		},
-		{
-			title: "PORTFOLIO",
-			icon: <i class="fa-solid fa-laptop"></i>,
-			link: "/portfolio",
-		}
-	]
 
-	const handleQuit = () => {
-		setShowNav(!showNav);
-	}
 
 
   return (
     <>
-			<NavQuitContainer onClick={handleQuit}>
+			<NavQuitContainer >
 				
 			</NavQuitContainer>
 			<NavList>
@@ -61,14 +42,11 @@ const NavQuitContainer = styled.div`
 	font-size: 1.5rem;
 	transition: all .3s;
 	color: white;
-	cursor: pointer;
-	:hover {
-		color: crimson;
-	}
+
 `;
 
 const NavList = styled.ul`
-	margin: 1rem;
+	margin: 1rem 0;
 	display: flex;
 	flex-direction: column;
 	list-style: none;
@@ -80,10 +58,15 @@ const Item = styled.li``;
 const ItemContainer = styled.div`
 	display: flex;
 	justify-content: center;
-	margin: 0 0 2rem 0;
+	padding: 1rem 0 1rem 0;
 	cursor: pointer;
 	font-size: 1.2rem;
 	color: white;
+	transition: all 0.3s;
+	:hover {
+		background-color: whitesmoke;
+		color: hsl(200, 100%, 30%);
+	}
 `;
 
 const Title = styled.div`

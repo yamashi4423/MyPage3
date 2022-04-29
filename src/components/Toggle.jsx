@@ -12,7 +12,7 @@ function Toggle({showNav, setShowNav}) {
         <Container>
             <Styled onClick={handleClick} >
                 {showNav ? 
-                <XBox><i class="fa-solid fa-xmark"></i></XBox>  
+                <XBox><i className="fa-solid fa-xmark"></i></XBox>  
                 : <BarBox><i className="fa-solid fa-bars"></i></BarBox>  }
                 
             </Styled>
@@ -26,15 +26,42 @@ export default Toggle
 
 const Container = styled.div`
     position: fixed;
-    top: 10px;
-    right: 10px;
+    bottom: 10vh;
+    right: 3vw;
     z-index: 99999;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 1.3rem;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: hsl(190, 100%, 30%);
+    box-shadow: 0 0 8px gray;
+    border: solid 1px azure;
+    transition: all .3s;
+    :hover {
+        border: solid 1px white;
+        box-shadow: 0 0 2px gray;
+        /* background-color: whitesmoke;
+        color: hsl(190, 100%, 30%); */
+    }
+
+    @media (min-width: 580px) {
+        bottom: 11vh;
+        right: 3vw;
+    }
+    @media (min-width: 980px) {
+        bottom: 11vh;
+        right: 5vw;
+    }
 `;
 
 const Styled = styled.div`
-    color: white;  
+
+
 `;
 
 const XBox = styled.div`

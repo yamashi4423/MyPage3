@@ -25,3 +25,5 @@ yarn-error.log*
 # 自分で追加
 .firebase
 .github
+.firebaserc
+firebase.json

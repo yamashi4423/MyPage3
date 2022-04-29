@@ -4,10 +4,12 @@
 :root {
   --body-font: Arial;
   --body-back: white;
+  --body-color: hsl(20, 15%, 20%);
   --header-font: 'Dela Gothic One', cursive;
-  --header-back: hsl(205, 100%, 33%);
+  --header-back: hsl(200, 100%, 35%);
   --header-color: white;
-  --nav-back: hsl(190, 100%, 40%);
+  --aboutme-back: hsl(20, 15%, 20%);
+  --nav-back: hsl(200, 100%, 35%);
   --footer-back: #CCC;
 
 }
@@ -16,12 +18,7 @@
   font-family: var(--body-font);
   margin: 0;
   padding: 0;
-
-}
-
-.navActive {
-  right: 0;
-
+  scroll-behavior: smooth;  
 }
 
 p {
