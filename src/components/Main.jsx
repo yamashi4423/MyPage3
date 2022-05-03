@@ -7,7 +7,7 @@ function Main() {
       <MainContainer>
         <ArticleContainer>
           <Title>やかんのページへようこそ</Title>
-          <SubTitle>Aboutme</SubTitle>
+          <SubTitle>About me</SubTitle>
           <p>理系大学3年生をしています。最近ぷよぐやみんぐのお勉強しはじめました。新学期早々大学行きたくないです。</p>
           <p>趣味は漫画、ラジオ、ときどき音楽とぷよぐやみんぐ。</p>
           <SubTitle>すき</SubTitle>

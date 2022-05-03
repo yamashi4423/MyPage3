@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 function BlogAdd({blogs, setBlogs}) {
@@ -21,11 +22,13 @@ function BlogAdd({blogs, setBlogs}) {
         setBlogs([ // splite構文復習しろカス！！！
             ...blogs,
             { 
-                id: `${Math.random() * 100}`,
+                id: `${Math.random().toString(32).substring(2)}`,
                 title: inputTitle,
                 body: inputBody
             }
         ]);
+        // setInputTitle("");
+        // setInputBody("");
     }
 
   return (
@@ -35,9 +38,9 @@ function BlogAdd({blogs, setBlogs}) {
             <Form onSubmit={handleSubmit}>
                 <InputContainer>
                     <div>title</div>
-                    <InputTitle onChange={handleChangeTitle}></InputTitle>
+                    <InputTitle onChange={handleChangeTitle} value={inputTitle}></InputTitle>
                     <div>body</div>
-                    <InputBody onChange={handleChangeBody}></InputBody>
+                    <InputBody onChange={handleChangeBody} value={inputBody}></InputBody>
                 </InputContainer>
                 <ButtonContainer>
                     <Button >+</Button>

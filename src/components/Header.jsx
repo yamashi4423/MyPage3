@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from './Menu';
@@ -7,8 +7,7 @@ import {useMediaQuery} from 'react-responsive';
 import MediaQuery from 'react-responsive';
 
 function Header() {   
-    const isTablet = useMediaQuery({query: '(min-width: 580px)'}) 
-
+    const isTablet = useMediaQuery({query: '(min-width: 580px)'});
 
   return (
     <>
@@ -17,9 +16,6 @@ function Header() {
                 <Link to='/' style={{color: 'white', textDecoration: 'none'}}>やかんのページ</Link>
             </TitleContainer>
 
-            <MediaQuery query='(min-width: 980px)'><p>メディアクエリオン</p></MediaQuery>
-
-            {/* {isPC ? <p>オン</p> : <p>オフ</p>} */}
             { isTablet ? 
                 <MenuContainer>
                     {
@@ -94,6 +90,9 @@ const Item = styled.div`
             background-color: white;
             color: var(--header-back);
         }
+        :last-child{
+            margin: 0 4px 0 0;
+        }
     }
     @media (min-width: 980px) {
         width: 10rem;
@@ -120,7 +119,7 @@ const AboutmeContainer = styled.div`
     justify-content: center;
     align-items: center;
     /* background-color: hsl(190, 100%, 30%); */
-    background-color: hsl(20, 15%, 10%);
+    background-color: var(--header-back);
 
     font-size: 1.3rem;
     letter-spacing: .2rem;

@@ -6,9 +6,9 @@
   --body-back: white;
   --body-color: hsl(20, 15%, 20%);
   --header-font: 'Dela Gothic One', cursive;
-  --header-back: hsl(200, 100%, 35%);
+  --header-back: hsl(190, 100%, 30%);
   --header-color: white;
-  --aboutme-back: hsl(20, 15%, 20%);
+  --aboutme-back: hsl(20, 15%, 10%);
   --nav-back: hsl(200, 100%, 35%);
   --footer-back: #CCC;
 

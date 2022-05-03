@@ -9,17 +9,37 @@ import Blog from './components/Blog';
 import BlogEdit from './components/BlogEdit';
 import Side from './components/Side';
 import Nav from './components/Nav';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Toggle from './components/Toggle';
 import BlogAdd from './components/BlogAdd';
+import Blogs from './components/Blogs';
+import db from './firebase';
+import { collection, doc, getDoc, getDocs, QuerySnapshot, setDoc } from 'firebase/firestore';
+import { async } from '@firebase/util';
 
 
 function App() {
   const [showNav, setShowNav] = useState(false); // ナビゲーションを表示するかどうか
   const [blogs, setBlogs] = useState([{id: "id", title: "title", body: "body"}]); // ブログのデータ
 
-  // 現在のデータ一覧
+  // 現在のデータ一覧の表示
   console.log("(@App.jsx) blogs:", blogs);
+
+  // データを取得
+  // useEffect(() => {
+    // const blogCollection = collection(db, "blogs");
+    // console.log(blogCollection);
+    // getDocs(blogCollection).then((querySnapshot) => {
+    //   console.log(querySnapshot);
+    // });
+  // }, []);
+  async function getBlogs(db) {
+    const blogCollection = collection(db, 'blogs');
+    const blogSnapshot = await getDocs(blogCollection);
+    console.log("blogSnapshot", blogSnapshot);
+  }
+
+  getBlogs(db);
 
   return (
     <>
@@ -44,7 +64,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Main/>}></Route>
                 <Route path='/edit' element={<Edit/>}></Route>
-                <Route path='/blog' element={<Blog/>}></Route>
+                <Route path='/blog' element={<Blogs blogs={blogs} setBlogs={setBlogs}/>}></Route>
+                <Route path='/blog/:id' element={<Blog blogs={blogs} setBlogs={setBlogs}/>}></Route>
                 <Route path='/blog/edit' element={<BlogEdit/>}></Route>
                 <Route path='/blog/add' element={<BlogAdd blogs={blogs} setBlogs={setBlogs}/>}></Route>
               </Routes>
@@ -84,15 +105,16 @@ const HeaderContainer = styled.div`
   left: 0;
   z-index: 999; */
   color: var(--header-color);
-  background-color: hsl(190, 100%, 30%);
+  /* background-color: hsl(190, 100%, 30%); */
+  background-color: var(--aboutme-back);
   font-family: var(--header-font);
 `;
 
 const NavContainer = styled.div`
   position: fixed;
   top: 0;
-  right: ${props => props.showNav ? '0vw' : '-50vw' }; // styled-componentsはコンポーネントとして捉える。クラスを付与するのではなく、値をコンポーネントを操作するように変更する
-  width: 50vw;
+  right: ${props => props.showNav ? '0vw' : '-100vw' }; // styled-componentsはコンポーネントとして捉える。クラスを付与するのではなく、値をコンポーネントを操作するように変更する
+  width: 60vw;
   height: 100%;
   z-index: 9999;
   background-color: hsl(190, 100%, 30%);

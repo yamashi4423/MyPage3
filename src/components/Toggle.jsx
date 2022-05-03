@@ -44,7 +44,7 @@ const Container = styled.div`
     transition: all .3s;
     :hover {
         border: solid 1px white;
-        box-shadow: 0 0 2px gray;
+        box-shadow: 0 0 0 gray;
         /* background-color: whitesmoke;
         color: hsl(190, 100%, 30%); */
     }
