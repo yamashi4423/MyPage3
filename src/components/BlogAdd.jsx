@@ -1,10 +1,14 @@
+import { collection, doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import db from '../firebase';
 
 function BlogAdd({blogs, setBlogs}) {
     const [inputTitle, setInputTitle] = useState("");
     const [inputBody, setInputBody] = useState("");
+    const blogsCollection = collection(db, "blogs");
+    const newId = `${Math.random().toString(32).substring(2)}`;
     
     // input を監視する関数
     const handleChangeTitle = (e) => {
@@ -19,16 +23,28 @@ function BlogAdd({blogs, setBlogs}) {
     // Submit時に行う関数
     const handleSubmit = (e) => {
         e.preventDefault(); // 忘れずに！！
+
+        // blogs配列を更新
+
         setBlogs([ // splite構文復習しろカス！！！
             ...blogs,
             { 
-                id: `${Math.random().toString(32).substring(2)}`,
+                id: newId,
                 title: inputTitle,
                 body: inputBody
             }
         ]);
         // setInputTitle("");
         // setInputBody("");
+
+        // データベースを更新
+        // async () => {
+            setDoc(doc(blogsCollection, newId), {
+                id: newId,
+                title: inputTitle,
+                body: inputBody
+            })
+        // }
     }
 
   return (

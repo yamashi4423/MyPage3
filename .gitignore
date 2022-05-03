@@ -27,4 +27,6 @@ yarn-error.log*
 .github
 .firebaserc
 firebase.json
-/src
+# 一回 add しちゃうとignoreしても意味ないらしい．追跡から除外するためには，git rm --cached [file] をする．
+/src/firebase.js
+

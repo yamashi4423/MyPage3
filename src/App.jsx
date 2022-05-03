@@ -22,24 +22,33 @@ function App() {
   const [showNav, setShowNav] = useState(false); // ナビゲーションを表示するかどうか
   const [blogs, setBlogs] = useState([{id: "id", title: "title", body: "body"}]); // ブログのデータ
 
-  // 現在のデータ一覧の表示
-  console.log("(@App.jsx) blogs:", blogs);
+
 
   // データを取得
-  // useEffect(() => {
-    // const blogCollection = collection(db, "blogs");
+  useEffect(() => {
+    const blogCollection = collection(db, "blogs");
     // console.log(blogCollection);
-    // getDocs(blogCollection).then((querySnapshot) => {
-    //   console.log(querySnapshot);
-    // });
-  // }, []);
-  async function getBlogs(db) {
-    const blogCollection = collection(db, 'blogs');
-    const blogSnapshot = await getDocs(blogCollection);
-    console.log("blogSnapshot", blogSnapshot);
-  }
+    getDocs(blogCollection).then((querySnapshot) => {
+      // ブログを取得
+      // console.log(querySnapshot.docs);
+      // querySnapshot.docs.map((doc) => console.log(doc.data()));
+      setBlogs(
+        querySnapshot.docs.map((doc) => { // () => () は，returnを省略しているだけ
+          return (
+              {
+                id: doc.data().id,
+                title: doc.data().title,
+                body: doc.data().body
+              }
+          )
+        })
+      )
+    });
+    // console.log("(@App.jsx) useEffectedBlogs:", blogs);
+  }, []);
 
-  getBlogs(db);
+  // 現在のデータ一覧の表示
+  console.log("(@App.jsx) blogs:", blogs);
 
   return (
     <>
