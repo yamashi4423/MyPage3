@@ -18,21 +18,25 @@ function Blog({blogs, setBlogs}) {
 
 
   return (
-    <div>
-      
-      <Title>{title}</Title>
-      
-      <ReactMarkdown>
-        {body}
-      </ReactMarkdown>
+    <>
 
-    </div>
+      <div className="markdown">
+        <Title>{title}</Title>
+        
+        <ReactMarkdown>
+          {body}
+        </ReactMarkdown>
+      
+      </div>  
+
+
+    </>
   )
 }
 
 export default Blog
 
 const Title = styled.div`
-  font-size: 1.5rem;
-  padding: 1rem 0 1.5rem 0;
+  font-size: 1.7rem;
+  padding: 1rem 0 1rem 0;
 `;

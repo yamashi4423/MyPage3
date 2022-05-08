@@ -97,6 +97,7 @@ const InputTitle = styled.input`
 
 const InputBody = styled.textarea`
     margin: 10px;
+    padding: 0.5rem;
     height: 70vh;
     font-size: 1.2rem;
 `;

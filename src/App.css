@@ -24,3 +24,34 @@
 p {
   padding: 0 0 1rem 0;
 }
+
+/* マークダウン */
+.markdown h1 {
+
+}
+.markdown h2 {
+  padding: 0.5rem 1.5rem;
+  margin: 2.5rem 0rem 2rem 0rem;
+  border: 6px double #000;
+}
+.markdown h3 {
+  padding: 0.7rem 1rem;
+  margin: 1.5rem 0rem 1rem 0rem;
+  border-left: 4px solid #000;
+}
+.markdown h4 {
+
+}
+.markdown h5 {
+
+}
+.markdown p {
+  padding: 1rem;
+}
+
+.markdown ul {
+  margin: 1rem 5rem;
+}
+.markdown li {
+  padding: 0.5rem;
+}
