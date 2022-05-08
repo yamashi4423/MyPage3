@@ -1,10 +1,10 @@
 import { collection, doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import db from '../firebase';
 
-function BlogAdd({blogs, setBlogs}) {
+function BlogEditForm({blogs, setBlogs}) {
     const [inputTitle, setInputTitle] = useState("");
     const [inputBody, setInputBody] = useState("");
     const blogsCollection = collection(db, "blogs");
@@ -46,43 +46,54 @@ function BlogAdd({blogs, setBlogs}) {
             })
         // }
     }
-
   return (
     <div>
         <Container>
-            <h2>ブログの追加</h2>
+            <Title>ブログの編集</Title>
             <Form onSubmit={handleSubmit}>
                 <InputContainer>
-                    <div>title</div>
+                    <div style={{color: "white", margin: "0 1rem", fontSize: "1.2rem"}}>Title</div>
                     <InputTitle onChange={handleChangeTitle} value={inputTitle}></InputTitle>
-                    <div>body</div>
+                    <div style={{color: "white", margin: "0 1rem", fontSize: "1.2rem"}}>Body</div>
                     <InputBody onChange={handleChangeBody} value={inputBody}></InputBody>
                 </InputContainer>
                 <ButtonContainer>
-                    <Button>+</Button>
+                    <Link to='/blog/edit'>
+                        <Button>+</Button>
+                    </Link>
                 </ButtonContainer>
             </Form>
         </Container>
-
     </div>
   )
 }
 
-export default BlogAdd
+export default BlogEditForm
+
 
 const Container = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: calc(100vh );
-
-
+    height: 500vh;
+    z-index: 99999999;
+    background-color: rgba(0,0,0, 0.5);
+    /* background-color: crimson; */
 `;
+
+const Title = styled.div`
+    margin: 3rem 1rem 0 1rem;
+    color: white;
+    font-size: 1.5rem;
+`;
+
 const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    margin: 2rem 0 ;
-
+    margin: 2rem 1rem ;
 `;
 const Form = styled.form`
 
@@ -90,13 +101,13 @@ const Form = styled.form`
 
 const InputTitle = styled.input`
     margin: 10px;
+    padding: .3rem .5rem;
     font-size: 1.3rem;
-
-
 `;
 
 const InputBody = styled.textarea`
     margin: 10px;
+    padding: .5rem .5rem;
     height: 70vh;
     font-size: 1.2rem;
 `;
@@ -105,14 +116,16 @@ const ButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: end;
 
 `;
 const Button = styled.button`
+    /* flex: 70%; */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 3rem;
     height: 1.4rem;
+    margin: 0 2rem;
     font-size: 1.5rem;
 `;

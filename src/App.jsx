@@ -16,13 +16,14 @@ import Blogs from './components/Blogs';
 import db from './firebase';
 import { collection, doc, getDoc, getDocs, QuerySnapshot, setDoc } from 'firebase/firestore';
 import { async } from '@firebase/util';
+import BlogEditForm from './components/BlogEditForm';
 
 
 function App() {
   const [showNav, setShowNav] = useState(false); // ナビゲーションを表示するかどうか
   const [blogs, setBlogs] = useState([{id: "id", title: "title", body: "body"}]); // ブログのデータ
 
-
+  // firestoreのセキュリティルールを変更しないとやばいいいいいいいいいいいいい！！！！！！！！！！
 
   // データを取得
   useEffect(() => {
@@ -75,8 +76,10 @@ function App() {
                 <Route path='/edit' element={<Edit/>}></Route>
                 <Route path='/blog' element={<Blogs blogs={blogs} setBlogs={setBlogs}/>}></Route>
                 <Route path='/blog/:id' element={<Blog blogs={blogs} setBlogs={setBlogs}/>}></Route>
-                <Route path='/blog/edit' element={<BlogEdit/>}></Route>
                 <Route path='/blog/add' element={<BlogAdd blogs={blogs} setBlogs={setBlogs}/>}></Route>
+                <Route path='/blog/edit' element={<BlogEdit blogs={blogs} setBlogs={setBlogs}/>}>
+                  <Route path='/blog/edit/:id' element={<BlogEditForm blogs={blogs} setBlogs={setBlogs}/>}></Route>
+                </Route>
               </Routes>
             </MainContainer>
           </MainWrapper>

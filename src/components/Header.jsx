@@ -91,7 +91,7 @@ const Item = styled.div`
             color: var(--header-back);
         }
         :last-child{
-            margin: 0 4px 0 0;
+            padding: 0 4px 0 0;
         }
     }
     @media (min-width: 980px) {
