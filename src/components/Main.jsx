@@ -7,9 +7,11 @@ function Main() {
       <MainContainer>
         <ArticleContainer>
           <Title>やかんのページへようこそ</Title>
+
           <SubTitle>About me</SubTitle>
-          <p>理系大学3年生をしています。最近ぷよぐやみんぐのお勉強しはじめました。新学期早々大学行きたくないです。</p>
-          <p>趣味は漫画、ラジオ、ときどき音楽とぷよぐやみんぐ。</p>
+          <p>大学3年生をしています。新学期早々大学行きたくないです。</p>
+          <p>趣味は漫画、ラジオ、ときどき音楽。</p>
+          
           <SubTitle>すき</SubTitle>
           <List>
             <I>浅野いにお</I>
@@ -21,6 +23,8 @@ function Main() {
           </List>
           <p>とかです</p>
           
+          <SubTitle>近況</SubTitle>
+          <p>メイドインアビスがめちゃくちゃ熱いです。さいこうです。（2022/09/02）</p>
         </ArticleContainer>
         <SideContainer>
           

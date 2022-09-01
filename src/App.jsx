@@ -17,6 +17,8 @@ import db from './firebase';
 import { collection, doc, getDoc, getDocs, QuerySnapshot, setDoc } from 'firebase/firestore';
 import { async } from '@firebase/util';
 import BlogEditForm from './components/BlogEditForm';
+import Arts from './components/Arts';
+import Mnist from './components/Mnist';
 
 
 function App() {
@@ -80,6 +82,8 @@ function App() {
                 <Route path='/blog/edit' element={<BlogEdit blogs={blogs} setBlogs={setBlogs}/>}>
                   <Route path='/blog/edit/:id' element={<BlogEditForm blogs={blogs} setBlogs={setBlogs}/>}></Route>
                 </Route>
+                <Route path='/arts' element={<Arts/>}></Route>
+                <Route path='/arts/mnist' element={<Mnist/>}></Route>
               </Routes>
             </MainContainer>
           </MainWrapper>

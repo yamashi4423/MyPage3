@@ -13,7 +13,12 @@ const navData = [
         title: "PORTFOLIO",
         icon: <i class="fa-solid fa-laptop"></i>,
         link: "/portfolio",
-    }
+    },
+    {
+        title: "ARTS",
+        icon: <i class="fa-solid fa-laptop"></i>,
+        link: "/arts",
+    },
 ]
 
 export default navData
